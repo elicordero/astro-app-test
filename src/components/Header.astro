@@ -3,17 +3,42 @@ import laravelLogo from "../assets/laravel-logo.svg";
 ---
 
 <header class="bg-gradient-to-b from-secondary pb-16 md:pb-24 pt-16 md:pt-20">
-  <img
-    src={laravelLogo.src}
-    alt="Laravel Logo"
-    class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-8"
-  />
+  <div id="logo" class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-8">
+    <img
+      src={laravelLogo.src}
+      alt="Laravel Logo"
+      class="w-full h-full"
+    />
+  </div>
   <h1
     class="text-4xl md:text-6xl font-bold text-center bg-gradient-to-r from-primary to-secondary/20 text-transparent bg-clip-text"
+    id="titulo"
   >
     Curso de Laravel
   </h1>
-  <p class="text-center text-gray-600 text-lg md:text-xl py-4">
+  <p class="text-center text-gray-600 text-lg md:text-xl py-4" id="subtitulo">
     Aprende Laravel desde cero y aprende a desarrollar aplicaciones web
   </p>
 </header>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  const tl = gsap.timeline();
+
+  tl.from('#logo', {
+    scale: 0,
+    duration: 1.2,
+    ease: 'back.out(1.7)', // rebote al final, más suave que elastic
+  })
+  .from('#titulo', {
+    opacity: 0,
+    y: 30,
+    duration: .50,
+  }, "+=0.1")
+  .from('#subtitulo', {
+    opacity: 0,
+    y: 20,
+    duration: .25,
+  }, "+=0.2");
+</script>
